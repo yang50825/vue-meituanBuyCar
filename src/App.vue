@@ -1,28 +1,75 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <MyList :list="list" @subCount="subCount" @addCount="addCount"></MyList>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MyList from './components/MyList'
 export default {
   name: 'App',
+  data() {
+    return {
+      list: [
+        {
+          id: 100,
+          name: 'CHAGEE霸王茶姬: CH...观音仙椰/茉莉仙椰2.02选1',
+          price: 16.2,
+          count: 1,
+        },
+        {
+          id: 101,
+          name: '青青糯山（中杯）1杯',
+          price: 13.5,
+          count: 1,
+        },
+      ],
+    }
+  },
+  methods: {
+    subCount(id) {
+      this.list.forEach((item) => {
+        if (item.id === id) {
+          item.count--
+        }
+      })
+    },
+    addCount(id) {
+      this.list.forEach((item) => {
+        if (item.id === id) {
+          item.count++
+        }
+      })
+    },
+  },
   components: {
-    HelloWorld
-  }
+    MyList,
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+em,
+i {
+  font-style: normal;
+}
+
+.wrapper {
+  width: 1225px;
+  margin: 0 auto;
 }
 </style>
