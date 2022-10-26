@@ -77,6 +77,7 @@ export default {
       }
     },
   },
+  //
   computed: {
     priceSum() {
       let sum = this.list.reduce(
